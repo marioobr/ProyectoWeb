@@ -624,7 +624,7 @@
 
 						<ul class="submenu">
 							<li class="hover">
-								<a href="tables.html">
+								<a href="AgrDoctor.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Ingresar Doctor
 								</a>
