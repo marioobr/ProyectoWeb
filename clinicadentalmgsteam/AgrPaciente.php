@@ -495,7 +495,7 @@
 							</li>
 
 							<li class="hover">
-								<a href="typography.html">
+								<a href="AgrPaciente.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Ingresar Paciente
 								</a>
@@ -624,7 +624,7 @@
 
 						<ul class="submenu">
 							<li class="hover">
-								<a href="tables.html">
+								<a href="AgrDoctor.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Ingresar Doctor
 								</a>
@@ -662,7 +662,7 @@
 					</li>
 
 					<li class="hover">
-						<a href="AgrCita.php" class="dropdown-toggle">
+						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-pencil-square-o"></i>
 							<span class="menu-text"> Citas </span>
 
@@ -682,7 +682,7 @@
 							</li> -->
 
 							<li class="hover">
-								<a href="form-elements-2.html">
+								<a href="AgrCita.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Realizar cita
 								</a>

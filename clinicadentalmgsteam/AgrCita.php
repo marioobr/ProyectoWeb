@@ -414,7 +414,7 @@
 						<b class="arrow"></b>
 					</li> -->
 
-					<li class="active open hover">
+					<li class="open hover">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fas fa-user"></i>
 							<span class="menu-text">
@@ -661,8 +661,8 @@
 						</ul>
 					</li>
 
-					<li class="hover">
-						<a href="AgrCita.php" class="dropdown-toggle">
+					<li class="active hover">
+						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-pencil-square-o"></i>
 							<span class="menu-text"> Citas </span>
 
