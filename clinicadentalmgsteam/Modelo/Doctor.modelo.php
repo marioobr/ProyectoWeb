@@ -4,7 +4,7 @@ include_once("Connect.php");
 Class DocModelo extends Conexion{
     private $myCon;
 
-	public function listarPac()
+	public function listarDoc()
 	{
 		try
 		{
@@ -22,12 +22,12 @@ Class DocModelo extends Conexion{
 
 				//_SET(CAMPOBD, atributoEntidad)			
 				$doc->__SET('idDoctor', $r->idDoctor);		
-				$doc->__SET('Cedula', $r->cedula);		
-				$doc->__SET('CodMINSA', $r->codMinsa);		
-				$doc->__SET('Nombres', $r->nombres);		
-				$doc->__SET('Apellidos', $r->apellidos);
-				$doc->__SET('Telefono', $r->telefono);		
-				$doc->__SET('Sexo', $r->sexo);		
+				$doc->__SET('Cedula', $r->Cedula);		
+				$doc->__SET('CodMINSA', $r->CodMINSA);		
+				$doc->__SET('Nombres', $r->Nombres);		
+				$doc->__SET('Apellidos', $r->Apellidos);
+				$doc->__SET('Telefono', $r->Telefono);		
+				$doc->__SET('Sexo', $r->Sexo);		
 
 				$result[] = $doc;
 
@@ -48,7 +48,7 @@ Class DocModelo extends Conexion{
 		{
 			
 			$this->myCon = parent::conectar();
-			$sql = "INSERT INTO doctor (Cedula,CodMINSA,Nombres,Apellidos,Telefono,Telefono,Sexo,Estado) 
+			$sql = "INSERT INTO doctor (Cedula,CodMINSA,Nombres,Apellidos,Telefono,Sexo,Estado) 
 		        VALUES (?, ?, ?, ?, ?, ?, 1)";
 
 			$this->myCon->prepare($sql)
@@ -116,13 +116,14 @@ Class DocModelo extends Conexion{
 
 			$doc = new Doctor();
 
-			$doc->__SET('idDoc', $r->idDoctor);
-			$doc->__SET('Cedula', $r->cedula);
-			$doc->__SET('CodMINSA', $r->codMinsa);
-			$doc->__SET('Nombres', $r->nombres);
-			$doc->__SET('Apellidos', $r->apellidos);
-			$doc->__SET('Telefono', $r->telefono);
-			$doc->__SET('Sexo', $r->sexo);
+			
+            $doc->__SET('idDoctor', $r->idDoctor);		
+            $doc->__SET('Cedula', $r->Cedula);		
+            $doc->__SET('CodMINSA', $r->CodMINSA);		
+            $doc->__SET('Nombres', $r->Nombres);		
+            $doc->__SET('Apellidos', $r->Apellidos);
+            $doc->__SET('Telefono', $r->Telefono);		
+            $doc->__SET('Sexo', $r->Sexo);
 
 			return $doc;
 		} 

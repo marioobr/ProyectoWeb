@@ -4,7 +4,7 @@
     include_once("../Modelo/Doctor.modelo.php");
 
     $doc = new Doctor();
-    $docModelo = new DoctorModelo();
+    $docModelo = new DocModelo();
 
 
     if ($_POST) 
@@ -26,11 +26,11 @@
             
                     $docModelo->Registrar($doc);
                     //var_dump($emp);
-                    header("Location: /clinicadentalmgsteam/tblDoctores?msjNewEmp=1");
+                    header("Location: /clinicadentalmgsteam/tblDoctores?msjNewDoc=1");
                     
                 }
                 catch(Exception $e) {
-                    header("Location: /clinicadentalmgsteam/tblDoctores.php?msjNewEmp=2");
+                    header("Location: /clinicadentalmgsteam/tblDoctores.php?msjEditDoc=2");
                     die($e->getMessage());
                 }
                 break;

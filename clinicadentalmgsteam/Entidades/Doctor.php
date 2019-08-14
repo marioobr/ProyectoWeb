@@ -2,13 +2,13 @@
 
 Class Doctor{
     private $idDoctor;
-    private $cedula;
-    private $codMinsa;
-    private $nombres;
-    private $apellidos;
-    private $telefono;
-    private $sexo;
-    private $estado;
+    private $Cedula;
+    private $CodMINSA;
+    private $Nombres;
+    private $Apellidos;
+    private $Telefono;
+    private $Sexo;
+    private $Estado;
 
     public function __GET($k){ return $this->$k; }
 	public function __SET($k, $v){ return $this->$k = $v; }

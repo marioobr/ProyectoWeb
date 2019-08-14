@@ -22,13 +22,14 @@ Class PacienteModelo extends Conexion{
 
 				//_SET(CAMPOBD, atributoEntidad)			
 				$pac->__SET('idPaciente', $r->idPaciente);		
-				$pac->__SET('Cedula', $r->cedula);		
-				$pac->__SET('Nombres', $r->nombres);		
-				$pac->__SET('Apellidos', $r->apellidos);		
-				$pac->__SET('Edad', $r->edad);		
-				$pac->__SET('Sexo', $r->sexo);		
-				$pac->__SET('Telefono', $r->telefono);		
-				$pac->__SET('Correo', $r->correo);		
+				$pac->__SET('Cedula', $r->Cedula);		
+				$pac->__SET('NoExpediente', $r->NoExpediente);		
+				$pac->__SET('Nombres', $r->Nombres);		
+				$pac->__SET('Apellidos', $r->Apellidos);		
+				$pac->__SET('Edad', $r->Edad);		
+				$pac->__SET('Sexo', $r->Sexo);		
+				$pac->__SET('Telefono', $r->Telefono);		
+				$pac->__SET('Correo', $r->Correo);		
 
 				$result[] = $pac;
 
@@ -123,18 +124,18 @@ Class PacienteModelo extends Conexion{
 			
 			$r = $stm->fetch(PDO::FETCH_OBJ);
 
-			$pac = new Paciente();
+			$pac = new Paciente();;
 
-			$pac->__SET('idPac', $r->idPaciente);
-			$pac->__SET('Cedula', $r->cedula);
-			$pac->__SET('NoExpediente', $r->noExpediente);
-			$pac->__SET('Nombres', $r->nombres);
-			$pac->__SET('Apellidos', $r->apellidos);
-			$pac->__SET('Edad', $r->edad);
-			$pac->__SET('Sexo', $r->sexo);
-			$pac->__SET('Telefono', $r->telefono);
-			$pac->__SET('Direccion', $r->direccion);
-			$pac->__SET('Correo', $r->correo);
+			$pac->__SET('idPaciente', $r->idPaciente);		
+			$pac->__SET('Cedula', $r->Cedula);		
+			$pac->__SET('NoExpediente', $r->NoExpediente);
+			$pac->__SET('Nombres', $r->Nombres);		
+			$pac->__SET('Apellidos', $r->Apellidos);		
+			$pac->__SET('Edad', $r->Edad);		
+			$pac->__SET('Sexo', $r->Sexo);		
+			$pac->__SET('Telefono', $r->Telefono);
+			$pac->__SET('Direccion', $r->Direccion);		
+			$pac->__SET('Correo', $r->Correo);
 
 			return $pac;
 		} 
