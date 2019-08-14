@@ -1,7 +1,7 @@
 <?php
 include_once("Connect.php");
 
-Class PacienteModelo extends Conexion{
+Class DocModelo extends Conexion{
     private $myCon;
 
 	public function listarPac()
@@ -10,7 +10,7 @@ Class PacienteModelo extends Conexion{
 		{
 			$this->myCon = parent::conectar();
 			$result = array();
-			$querySQL = "SELECT * FROM paciente";
+			$querySQL = "SELECT * FROM doctor";
 
 			$stm = $this->myCon->prepare($querySQL);
 			$stm->execute();
@@ -18,19 +18,18 @@ Class PacienteModelo extends Conexion{
 			foreach($stm->fetchAll(PDO::FETCH_OBJ) as $r)
 			{
 				
-				$pac = new Paciente();
+				$doc = new Doctor();
 
 				//_SET(CAMPOBD, atributoEntidad)			
-				$pac->__SET('idPaciente', $r->idPaciente);		
-				$pac->__SET('Cedula', $r->cedula);		
-				$pac->__SET('Nombres', $r->nombres);		
-				$pac->__SET('Apellidos', $r->apellidos);		
-				$pac->__SET('Edad', $r->edad);		
-				$pac->__SET('Sexo', $r->sexo);		
-				$pac->__SET('Telefono', $r->telefono);		
-				$pac->__SET('Correo', $r->correo);		
+				$doc->__SET('idDoctor', $r->idDoctor);		
+				$doc->__SET('Cedula', $r->cedula);		
+				$doc->__SET('CodMINSA', $r->codMinsa);		
+				$doc->__SET('Nombres', $r->nombres);		
+				$doc->__SET('Apellidos', $r->apellidos);
+				$doc->__SET('Telefono', $r->telefono);		
+				$doc->__SET('Sexo', $r->sexo);		
 
-				$result[] = $pac;
+				$result[] = $doc;
 
 				//var_dump($result);
 			}
@@ -43,26 +42,23 @@ Class PacienteModelo extends Conexion{
 		}
 	}
 	
-	public function Registrar(Paciente $data)
+	public function Registrar(Doctor $data)
 	{
 		try 
 		{
 			
 			$this->myCon = parent::conectar();
-			$sql = "INSERT INTO paciente (Cedula,NoExpediente,Nombres,Apellidos,Edad,Sexo,Telefono,Direccion,Correo,Estado) 
-		        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 1)";
+			$sql = "INSERT INTO doctor (Cedula,CodMINSA,Nombres,Apellidos,Telefono,Telefono,Sexo,Estado) 
+		        VALUES (?, ?, ?, ?, ?, ?, 1)";
 
 			$this->myCon->prepare($sql)
 		     ->execute(array(
 			 $data->__GET('Cedula'),
-			 $data->__GET('NoExpediente'),
+			 $data->__GET('CodMINSA'),
 			 $data->__GET('Nombres'),
 			 $data->__GET('Apellidos'),
-			 $data->__GET('Edad'),
-			 $data->__GET('Sexo'),
 			 $data->__GET('Telefono'),
-			 $data->__GET('Direccion'),
-			 $data->__GET('Correo')));
+			 $data->__GET('Sexo')));
 			
 			$this->myCon = parent::desconectar();
 		} 
@@ -72,36 +68,31 @@ Class PacienteModelo extends Conexion{
 		}
 	}
 
-	public function actualizarPac(Paciente $data)
+	public function actualizarDoc(Doctor $data)
 	{
 		try 
 		{
 			$this->myCon = parent::conectar();
-			$sql = "UPDATE paciente SET 
-						Cedula = ?, 
+			$sql = "UPDATE doctor SET 
+						Cedula = ?,
+                        CodMINSA = ?, 
 						Nombres = ?,
-						Apellidos = ?, 
-						Edad = ?,
-						Sexo = ?, 
+						Apellidos = ?,
 						Telefono = ?,
-						Direccion = ?, 
-						Correo = ?,
+						Sexo = ?,
 						Estado = 2 
-				    WHERE idPaciente = ?";
+				    WHERE idDoctor = ?";
 
 				$this->myCon->prepare($sql)
 			     ->execute(
 				array(
 					$data->__GET('Cedula'), 
-					$data->__GET('NoExpediente'), 
+					$data->__GET('CodMINSA'), 
 					$data->__GET('Nombres'), 
 					$data->__GET('Apellidos'),
-					$data->__GET('Edad'),
+					$data->__GET('Telefono'),
 					$data->__GET('Sexo'),
-					$data->__GET('Telefono'), 
-					$data->__GET('Direccion'), 
-					$data->__GET('Correo'),
-					$data->__GET('idPaciente')
+					$data->__GET('idDoctor')
 					)
 				);
 				$this->myCon = parent::desconectar();
@@ -112,31 +103,28 @@ Class PacienteModelo extends Conexion{
 		}
 	}
 
-	public function obtenerPac($id)
+	public function obtenerDoc($id)
 	{
 		try 
 		{
 			$this->myCon = parent::conectar();
-			$querySQL = "SELECT * FROM paciente WHERE idPaciente = ?";
+			$querySQL = "SELECT * FROM doctor WHERE idDoctor = ?";
 			$stm = $this->myCon->prepare($querySQL);
 			$stm->execute(array($id));
 			
 			$r = $stm->fetch(PDO::FETCH_OBJ);
 
-			$pac = new Paciente();
+			$doc = new Doctor();
 
-			$pac->__SET('idPac', $r->idPaciente);
-			$pac->__SET('Cedula', $r->cedula);
-			$pac->__SET('NoExpediente', $r->noExpediente);
-			$pac->__SET('Nombres', $r->nombres);
-			$pac->__SET('Apellidos', $r->apellidos);
-			$pac->__SET('Edad', $r->edad);
-			$pac->__SET('Sexo', $r->sexo);
-			$pac->__SET('Telefono', $r->telefono);
-			$pac->__SET('Direccion', $r->direccion);
-			$pac->__SET('Correo', $r->correo);
+			$doc->__SET('idDoc', $r->idDoctor);
+			$doc->__SET('Cedula', $r->cedula);
+			$doc->__SET('CodMINSA', $r->codMinsa);
+			$doc->__SET('Nombres', $r->nombres);
+			$doc->__SET('Apellidos', $r->apellidos);
+			$doc->__SET('Telefono', $r->telefono);
+			$doc->__SET('Sexo', $r->sexo);
 
-			return $pac;
+			return $doc;
 		} 
 		catch (Exception $e) 
 		{
@@ -144,12 +132,12 @@ Class PacienteModelo extends Conexion{
 		}
 	}
 
-	public function eliminarPac($id)
+	public function eliminarDoc($id)
 	{
 		try 
 		{
 			$this->myCon = parent::conectar();
-			$querySQL = "DELETE FROM paciente WHERE idPaciente = ?";
+			$querySQL = "DELETE FROM doctor WHERE idDoctor = ?";
 			$stm = $this->myCon->prepare($querySQL);
 			$stm->execute(array($id));
 		} 

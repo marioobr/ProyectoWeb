@@ -1,3 +1,12 @@
+<?php
+include 'Entidades/Doctor.php';
+
+include 'Modelo/Doctor.modelo.php';
+
+$modeloDoc = new DocModelo();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -15,7 +24,13 @@
 		<link rel="stylesheet" href="assets/font-awesome/5.10.1/css/solid.min.css" />
 
 		<!-- page specific plugin styles -->
-
+		<link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
+		<link rel="stylesheet" href="assets/css/chosen.min.css" />
+		<link rel="stylesheet" href="assets/css/bootstrap-datepicker3.min.css" />
+		<link rel="stylesheet" href="assets/css/bootstrap-timepicker.min.css" />
+		<link rel="stylesheet" href="assets/css/daterangepicker.min.css" />
+		<link rel="stylesheet" href="assets/css/bootstrap-datetimepicker.min.css" />
+		<link rel="stylesheet" href="assets/css/bootstrap-colorpicker.min.css" />
 		<!-- text fonts -->
 		<link rel="stylesheet" href="assets/css/fonts.googleapis.com.css" />
 
@@ -975,10 +990,10 @@
 
 						<div class="page-header">
 							<h1>
-								Top Menu Style
+								Registrar Doctor
 								<small>
 									<i class="ace-icon fa fa-angle-double-right"></i>
-									top menu &amp; navigation
+									
 								</small>
 							</h1>
 						</div><!-- /.page-header -->
@@ -1014,46 +1029,74 @@
 								</div>
 
 								<div class="center">
+									<br>
+									<form class="form-horizontal" role="form">
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Cédula: </label>
+
+											<div class="col-sm-9">
+												<input type="text" maxlength="16" id="form-field-1" placeholder="001-300220-0024Q" class="col-xs-10 col-sm-5" name="txtcedula"/>
+											</div>
+										</div>
 									<br />
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Cod.MINSA: </label>
+
+											<div class="col-sm-9">
+												<input type="number" min="1" maxlength="5" id="form-field-1" placeholder="12345" class="col-xs-10 col-sm-5" name="txtminsa"/>
+											</div>
+										</div>
 									<br />
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Nombres: </label>
+
+											<div class="col-sm-9">
+												<input type="text"  id="form-field-1" placeholder="Marco Antonio" class="col-xs-10 col-sm-5" name="txtnombres"/>
+											</div>
+										</div>
 									<br />
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Apellidos: </label>
+
+											<div class="col-sm-9">
+												<input type="text"  id="form-field-1" placeholder="Solis Barrios" class="col-xs-10 col-sm-5" name="txtapellidos"/>
+											</div>
+										</div>
 									<br />
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Teléfono: </label>
+
+											<div class="col-sm-9">
+												<input type="number" min="1"  maxlength="8" id="form-field-1" placeholder="57575757" class="col-xs-10 col-sm-5" name="txttelefono"/>
+											</div>
+										</div>
 									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right" for="form-field-1">Sexo:</label>
+
+											<div class="col-sm-9">
+												<select class="col-xs-10 col-sm-5" id="form-field-select-1" name="selsexo">
+													<option value=""></option>
+													<option value="hm">Hombre</option>
+													<option value="mj">Mujer</option>
+												</select>
+											</div>
+										</div>
+										<div >
+											<div class="col-sm-9">
+												<button class="btn btn-info" type="button">
+													<i class="ace-icon fa fa-check bigger-110"></i>
+													Registrar
+												</button>
+
+												&nbsp; &nbsp; &nbsp;
+												<button class="btn" type="reset">
+													<i class="ace-icon fa fa-undo bigger-110"></i>
+													Cancelar
+												</button>
+											</div>
+										</div>
+									</form>
 								</div>
 
 								<!-- PAGE CONTENT ENDS -->

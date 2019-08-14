@@ -4,7 +4,7 @@ Class Doctor{
     private $idDoctor;
     private $cedula;
     private $codMinsa;
-    private $Nombres;
+    private $nombres;
     private $apellidos;
     private $telefono;
     private $sexo;

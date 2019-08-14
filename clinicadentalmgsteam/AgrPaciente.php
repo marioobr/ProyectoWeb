@@ -1015,45 +1015,97 @@
 
 								<div class="center">
 									<br />
+									<form class="form-horizontal" role="form">
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Cédula: </label>
+
+											<div class="col-sm-9">
+												<input type="text" maxlength="16" id="form-field-1" placeholder="001-300220-0024Q" class="col-xs-10 col-sm-5" name="txtcedula"/>
+											</div>
+										</div>
 									<br />
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> No.Expediente: </label>
+
+											<div class="col-sm-9">
+												<input type="number" min="1" maxlength="5" id="form-field-1" placeholder="12345" class="col-xs-10 col-sm-5" name="txtexpediente"/>
+											</div>
+										</div>
 									<br />
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Nombres: </label>
+
+											<div class="col-sm-9">
+												<input type="text"  id="form-field-1" placeholder="Marco Antonio" class="col-xs-10 col-sm-5" name="txtnombres"/>
+											</div>
+										</div>
 									<br />
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Apellidos: </label>
+
+											<div class="col-sm-9">
+												<input type="text"  id="form-field-1" placeholder="Solis Barrios" class="col-xs-10 col-sm-5" name="txtapellidos"/>
+											</div>
+										</div>
 									<br />
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Edad: </label>
+
+											<div class="col-sm-9">
+												<input type="number" min="1" maxlength="2" id="form-field-1" placeholder="24" class="col-xs-10 col-sm-5" name="txtexpediente"/>
+											</div>
+										</div>
 									<br />
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right" for="form-field-1">Sexo:</label>
+
+											<div class="col-sm-9">
+												<select class="col-xs-10 col-sm-5" id="form-field-select-1" name="selsexo">
+													<option value=""></option>
+													<option value="hm">Hombre</option>
+													<option value="mj">Mujer</option>
+												</select>
+											</div>
+										</div>
 									<br />
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Teléfono: </label>
+
+											<div class="col-sm-9">
+												<input type="number" min="1"  maxlength="8" id="form-field-1" placeholder="57575757" class="col-xs-10 col-sm-5" name="txttelefono"/>
+											</div>
+										</div>
 									<br />
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Dirección: </label>
+
+											<div class="col-sm-9">
+												<input type="text"  id="form-field-1" placeholder="Bo. La Fuente" class="col-xs-10 col-sm-5" name="txtdireccion"/>
+											</div>
+										</div>
 									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Correo: </label>
+
+											<div class="col-sm-9">
+												<input type="email" id="form-field-1" placeholder="juanga@yopmail.com" class="col-xs-10 col-sm-5" name="txttelefono"/>
+											</div>
+										</div>
+										<div >
+											<div class="col-sm-9">
+												<button class="btn btn-info" type="button">
+													<i class="ace-icon fa fa-check bigger-110"></i>
+													Registrar
+												</button>
+
+												&nbsp; &nbsp; &nbsp;
+												<button class="btn" type="reset">
+													<i class="ace-icon fa fa-undo bigger-110"></i>
+													Cancelar
+												</button>
+											</div>
+										</div>
+									</form>
 								</div>
 
 								<!-- PAGE CONTENT ENDS -->

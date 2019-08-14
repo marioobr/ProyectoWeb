@@ -1,10 +1,10 @@
 <?php
 
-    include_once("../Entidades/Paciente.php");
-    include_once("../Modelo/Paciente.modelo.php");
+    include_once("../Entidades/Doctor.php");
+    include_once("../Modelo/Doctor.modelo.php");
 
-    $pac = new Paciente();
-    $pacModelo = new PacienteModelo();
+    $doc = new Doctor();
+    $docModelo = new DoctorModelo();
 
 
     if ($_POST) 
@@ -17,46 +17,40 @@
                 try
                 {
 
-                    $pac->__SET('Cedula', $_POST['txtcedula']);
-                    $pac->__SET('NoExpediente', $_POST['txtexpediente']);
-                    $pac->__SET('Nombres', $_POST['txtnombres']);
-                    $pac->__SET('Apellidos', $_POST['txtapellidos']);
-                    $pac->__SET('Edad', $_POST['txtedad']);
-                    $pac->__SET('Sexo', $_POST['selsexo']);
-                    $pac->__SET('Telefono', $_POST['txttelefono']);
-                    $pac->__SET('Direccion', $_POST['txtdireccion']);
-                    $pac->__SET('Correo', $_POST['txtcorreo']);
+                    $doc->__SET('Cedula', $_POST['txtcedula']);
+                    $doc->__SET('CodMINSA', $_POST['txtminsa']);
+                    $doc->__SET('Nombres', $_POST['txtnombres']);
+                    $doc->__SET('Apellidos', $_POST['txtapellidos']);
+                    $doc->__SET('Telefono', $_POST['txttelefono']);
+                    $doc->__SET('Sexo', $_POST['selsexo']);
             
-                    $pacModelo->Registrar($pac);
+                    $docModelo->Registrar($doc);
                     //var_dump($emp);
-                    header("Location: /clinicadentalmgsteam/tblPacientes.php?msjNewEmp=1");
+                    header("Location: /clinicadentalmgsteam/tblDoctores?msjNewEmp=1");
                     
                 }
                 catch(Exception $e) {
-                    header("Location: /clinicadentalmgsteam/tblPacientes.php?msjNewEmp=2");
+                    header("Location: /clinicadentalmgsteam/tblDoctores.php?msjNewEmp=2");
                     die($e->getMessage());
                 }
                 break;
             
             case '2':
                 try {
-                    $pac->__SET('idPaciente', $_POST['txtid']);
-                    $pac->__SET('cedula', $_POST['txtcedula']);
-                    $pac->__SET('noExpediente', $_POST['txtexpediente']);
-                    $pac->__SET('nombres', $_POST['txtnombres']);
-                    $pac->__SET('apellidos', $_POST['txtapellidos']);
-                    $pac->__SET('edad', $_POST['txtedad']);
-                    $pac->__SET('sexo', $_POST['selsexo']);
-                    $pac->__SET('telefono', $_POST['txttelefono']);
-                    $pac->__SET('direccion', $_POST['txtdireccion']);
-                    $pac->__SET('correo', $_POST['txtcorreo']);
+                    $doc->__SET('idDoctor', $_POST['txtid']);
+                    $doc->__SET('Cedula', $_POST['txtcedula']);
+                    $doc->__SET('CodMINSA', $_POST['txtminsa']);
+                    $doc->__SET('Nombres', $_POST['txtnombres']);
+                    $doc->__SET('Apellidos', $_POST['txtapellidos']);
+                    $doc->__SET('Telefono', $_POST['txttelefono']);
+                    $doc->__SET('Sexo', $_POST['selsexo']);
             
-                    $pacModelo->actualizarEmp($pac);
+                    $docModelo->actualizarDoc($doc);
                     //var_dump($emp);
-                    header("Location: /clinicadentalmgsteam/tblPacientes.php?msjEditEmp=1");
+                    header("Location: /clinicadentalmgsteam/tblDoctores.php?msjEditEmp=1");
 
                 } catch (Exception $e) {
-                    header("Location:/clinicadentalmgsteam/tblPacientes.php?msjEditEmp=2");
+                    header("Location:/clinicadentalmgsteam/tblDoctores.php?msjEditEmp=2");
                     die($e->getMessage());
                 }
                 
@@ -73,8 +67,8 @@
     
     if ($_GET) 
     {
-        $emp->__SET('idPaciente', $_GET['idPac']);
-        $empModelo->eliminarEmp($emp->__GET('idPaciente'));
-        header("Location: /clinicadentalmgsteam/tblPacientes.php");
+        $emp->__SET('idDoctor', $_GET['idDoc']);
+        $empModelo->eliminarEmp($emp->__GET('idDoctor'));
+        header("Location: /clinicadentalmgsteam/tblDoctores.php");
     }
     
