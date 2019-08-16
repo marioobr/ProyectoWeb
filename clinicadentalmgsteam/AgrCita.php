@@ -497,34 +497,16 @@
 							<li class="hover">
 								<a href="AgrPaciente.php">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Ingresar Paciente
+									Registrar Paciente
 								</a>
 
 								<b class="arrow"></b>
 							</li>
 
 							<li class="hover">
-								<a href="elements.html">
+								<a href="tblPacientes.php">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Ver Pacientes
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="hover">
-								<a href="buttons.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Actualizar Paciente
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="hover">
-								<a href="content-slider.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Eliminar Paciente
+									Administrar Pacientes
 								</a>
 
 								<b class="arrow"></b>
@@ -626,34 +608,16 @@
 							<li class="hover">
 								<a href="AgrDoctor.php">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Ingresar Doctor
+									Registrar Doctor
 								</a>
 
 								<b class="arrow"></b>
 							</li>
 
 							<li class="hover">
-								<a href="tables.html">
+								<a href="tblDoctores.php">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Ver Doctores
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="hover">
-								<a href="jqgrid.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Actualizar Doctor
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="hover">
-								<a href="jqgrid.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Eliminar Doctor
+									Administrar Doctores
 								</a>
 
 								<b class="arrow"></b>
@@ -661,7 +625,7 @@
 						</ul>
 					</li>
 
-					<li class="active hover">
+					<li class="active open hover">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-pencil-square-o"></i>
 							<span class="menu-text"> Citas </span>
@@ -691,27 +655,9 @@
 							</li>
 
 							<li class="hover">
-								<a href="form-wizard.html">
+								<a href="tblCitas.php">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Ver citas
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="hover">
-								<a href="wysiwyg.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Actualizar cita
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="hover">
-								<a href="dropzone.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Eliminar cita
+									Administrar Citas
 								</a>
 
 								<b class="arrow"></b>
@@ -975,10 +921,10 @@
 
 						<div class="page-header">
 							<h1>
-								Top Menu Style
+								Realizar Cita
 								<small>
 									<i class="ace-icon fa fa-angle-double-right"></i>
-									top menu &amp; navigation
+									
 								</small>
 							</h1>
 						</div><!-- /.page-header -->
@@ -1016,44 +962,59 @@
 								<div class="center">
 									<br />
 									<br />
+									<form class="form-horizontal" role="form" name="AgrCita" method="POST" action="Control/Cita.Control.php">
+									<input name="txtaccion" type="hidden" value="1">
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Fecha: </label>
+
+										<div class="col-sm-9">
+											<input type="date" id="form-field-1" placeholder="mm-dd-yyyy" class="col-xs-10 col-sm-3" name="txtdate" title="Fecha"/>
+										</div>
+									</div>
+									<br />
+									<br>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Hora: </label>
+
+										<div class="col-sm-9">
+											<input type="time"id="form-field-1"  class="col-xs-10 col-sm-3" name="txtTime"/>
+										</div>
+									</div>
+									<br /><br>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1">Doctor:</label>
+										<div class="col-sm-3">
+											<select name="txtDoctor" class="form-control" id="form-field-select-1">
+												<option value=""></option>
+											</select>
+										</div>
+									</div>
 									<br />
 									<br />
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1">Paciente:</label>
+										<div class="col-sm-3">
+											<select name="txtPaciente" class="form-control" id="form-field-select-1">
+												<option value=""></option>
+											</select>
+										</div>
+									</div>
+
 									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
+									<br>
+											<div class="col-sm-9">
+												<button class="btn btn-info" type="submit">
+													<i class="ace-icon fa fa-check bigger-110"></i>
+													Registrar
+												</button>
+
+												&nbsp; &nbsp; &nbsp;
+												<button class="btn" type="reset">
+													<i class="ace-icon fa fa-undo bigger-110"></i>
+													Cancelar
+												</button>
+											</div>
+									</form>
 								</div>
 
 								<!-- PAGE CONTENT ENDS -->

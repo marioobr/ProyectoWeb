@@ -420,16 +420,7 @@ $modeloDoc = new DocModelo();
 				</div><!-- /.sidebar-shortcuts-->
 
 				<ul class="nav nav-list">
-					<!-- <li class="hover">
-						<a href="index.html">
-							<i class="menu-icon fa fa-tachometer"></i>
-							<span class="menu-text"> Dashboard </span>
-						</a>
-
-						<b class="arrow"></b>
-					</li> -->
-
-					<li class="open hover">
+				<li class="open hover">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fas fa-user"></i>
 							<span class="menu-text">
@@ -519,27 +510,9 @@ $modeloDoc = new DocModelo();
 							</li>
 
 							<li class="hover">
-								<a href="elements.html">
+								<a href="tblPacientes.php">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Ver Pacientes
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="hover">
-								<a href="buttons.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Actualizar Paciente
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="hover">
-								<a href="content-slider.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Eliminar Paciente
+									Administrar Pacientes
 								</a>
 
 								<b class="arrow"></b>
@@ -648,27 +621,9 @@ $modeloDoc = new DocModelo();
 							</li>
 
 							<li class="hover">
-								<a href="tables.html">
+								<a href="tblDoctores.php">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Ver Doctores
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="hover">
-								<a href="jqgrid.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Actualizar Doctor
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="hover">
-								<a href="jqgrid.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Eliminar Doctor
+									Administrar Doctores
 								</a>
 
 								<b class="arrow"></b>
@@ -706,27 +661,9 @@ $modeloDoc = new DocModelo();
 							</li>
 
 							<li class="hover">
-								<a href="form-wizard.html">
+								<a href="tblCitas.php">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Ver citas
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="hover">
-								<a href="wysiwyg.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Actualizar cita
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="hover">
-								<a href="dropzone.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Eliminar cita
+									Administrar Citas
 								</a>
 
 								<b class="arrow"></b>
@@ -1036,7 +973,7 @@ $modeloDoc = new DocModelo();
 											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Cédula: </label>
 
 											<div class="col-sm-9">
-												<input type="text" maxlength="16" id="form-field-1" placeholder="001-300220-0024Q" class="col-xs-10 col-sm-5" name="txtcedula"/>
+												<input type="text" maxlength="16" id="form-field-1" placeholder="001-300220-0024Q" class="col-xs-10 col-sm-5" name="txtcedula" required/>
 											</div>
 										</div>
 									<br />
@@ -1044,7 +981,7 @@ $modeloDoc = new DocModelo();
 											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Cod.MINSA: </label>
 
 											<div class="col-sm-9">
-												<input type="number" min="1" maxlength="5" id="form-field-1" placeholder="12345" class="col-xs-10 col-sm-5" name="txtminsa"/>
+												<input type="number" min="1" maxlength="5" id="form-field-1" placeholder="12345" class="col-xs-10 col-sm-5" name="txtminsa" required/>
 											</div>
 										</div>
 									<br />
@@ -1052,7 +989,7 @@ $modeloDoc = new DocModelo();
 											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Nombres: </label>
 
 											<div class="col-sm-9">
-												<input type="text"  id="form-field-1" placeholder="Marco Antonio" class="col-xs-10 col-sm-5" name="txtnombres"/>
+												<input type="text"  id="form-field-1" placeholder="Marco Antonio" class="col-xs-10 col-sm-5" name="txtnombres" required>
 											</div>
 										</div>
 									<br />
@@ -1060,7 +997,7 @@ $modeloDoc = new DocModelo();
 											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Apellidos: </label>
 
 											<div class="col-sm-9">
-												<input type="text"  id="form-field-1" placeholder="Solis Barrios" class="col-xs-10 col-sm-5" name="txtapellidos"/>
+												<input type="text"  id="form-field-1" placeholder="Solis Barrios" class="col-xs-10 col-sm-5" name="txtapellidos" required/>
 											</div>
 										</div>
 									<br />
@@ -1068,7 +1005,7 @@ $modeloDoc = new DocModelo();
 											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Teléfono: </label>
 
 											<div class="col-sm-9">
-												<input type="number" min="1"  maxlength="8" id="form-field-1" placeholder="57575757" class="col-xs-10 col-sm-5" name="txttelefono"/>
+												<input type="number" min="1"  maxlength="8" id="form-field-1" placeholder="57575757" class="col-xs-10 col-sm-5" name="txttelefono" required/>
 											</div>
 										</div>
 									<br>

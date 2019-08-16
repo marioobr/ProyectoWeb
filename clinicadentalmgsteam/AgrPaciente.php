@@ -1,3 +1,12 @@
+<?php
+include 'Entidades/Paciente.php';
+
+include 'Modelo/Paciente.modelo.php';
+
+$modeloPac = new PacienteModelo;
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -497,34 +506,16 @@
 							<li class="hover">
 								<a href="AgrPaciente.php">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Ingresar Paciente
+									Registrar Paciente
 								</a>
 
 								<b class="arrow"></b>
 							</li>
 
 							<li class="hover">
-								<a href="elements.html">
+								<a href="tblPacientes.php">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Ver Pacientes
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="hover">
-								<a href="buttons.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Actualizar Paciente
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="hover">
-								<a href="content-slider.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Eliminar Paciente
+									Administrar Pacientes
 								</a>
 
 								<b class="arrow"></b>
@@ -626,7 +617,7 @@
 							<li class="hover">
 								<a href="AgrDoctor.php">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Ingresar Doctor
+									Registrar Doctor
 								</a>
 
 								<b class="arrow"></b>
@@ -635,25 +626,7 @@
 							<li class="hover">
 								<a href="tables.html">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Ver Doctores
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="hover">
-								<a href="jqgrid.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Actualizar Doctor
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="hover">
-								<a href="jqgrid.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Eliminar Doctor
+									Administrar Doctores
 								</a>
 
 								<b class="arrow"></b>
@@ -691,27 +664,9 @@
 							</li>
 
 							<li class="hover">
-								<a href="form-wizard.html">
+								<a href="tblCitas.php">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Ver citas
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="hover">
-								<a href="wysiwyg.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Actualizar cita
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="hover">
-								<a href="dropzone.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Eliminar cita
+									Administrar citas
 								</a>
 
 								<b class="arrow"></b>
@@ -975,10 +930,10 @@
 
 						<div class="page-header">
 							<h1>
-								Top Menu Style
+								Registrar Paciente
 								<small>
 									<i class="ace-icon fa fa-angle-double-right"></i>
-									top menu &amp; navigation
+									
 								</small>
 							</h1>
 						</div><!-- /.page-header -->
@@ -1015,12 +970,13 @@
 
 								<div class="center">
 									<br />
-									<form class="form-horizontal" role="form">
+									<form class="form-horizontal" role="form" name="AgrPac" method="POST" action="Control/Paciente.control.php">
+									<input name="txtaccion" type="hidden" value="1">
 										<div class="form-group">
 											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Cédula: </label>
 
 											<div class="col-sm-9">
-												<input type="text" maxlength="16" id="form-field-1" placeholder="001-300220-0024Q" class="col-xs-10 col-sm-5" name="txtcedula"/>
+												<input type="text" maxlength="16" id="form-field-1" placeholder="001-300220-0024Q" class="col-xs-10 col-sm-5" name="txtcedula" required/>
 											</div>
 										</div>
 									<br />
@@ -1028,7 +984,7 @@
 											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> No.Expediente: </label>
 
 											<div class="col-sm-9">
-												<input type="number" min="1" maxlength="5" id="form-field-1" placeholder="12345" class="col-xs-10 col-sm-5" name="txtexpediente"/>
+												<input type="number" min="1" maxlength="5" id="form-field-1" placeholder="12345" class="col-xs-10 col-sm-5" name="txtexpediente" required/>
 											</div>
 										</div>
 									<br />
@@ -1036,7 +992,7 @@
 											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Nombres: </label>
 
 											<div class="col-sm-9">
-												<input type="text"  id="form-field-1" placeholder="Marco Antonio" class="col-xs-10 col-sm-5" name="txtnombres"/>
+												<input type="text"  id="form-field-1" placeholder="Marco Antonio" class="col-xs-10 col-sm-5" name="txtnombres" required/>
 											</div>
 										</div>
 									<br />
@@ -1044,7 +1000,7 @@
 											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Apellidos: </label>
 
 											<div class="col-sm-9">
-												<input type="text"  id="form-field-1" placeholder="Solis Barrios" class="col-xs-10 col-sm-5" name="txtapellidos"/>
+												<input type="text"  id="form-field-1" placeholder="Solis Barrios" class="col-xs-10 col-sm-5" name="txtapellidos" required/>
 											</div>
 										</div>
 									<br />
@@ -1052,27 +1008,38 @@
 											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Edad: </label>
 
 											<div class="col-sm-9">
-												<input type="number" min="1" maxlength="2" id="form-field-1" placeholder="24" class="col-xs-10 col-sm-5" name="txtexpediente"/>
+												<input type="number" min="1" maxlength="2" id="form-field-1" placeholder="24" class="col-xs-10 col-sm-5" name="txtedad" required/>
 											</div>
 										</div>
 									<br />
-										<div class="form-group">
-											<label class="col-sm-3 control-label no-padding-right" for="form-field-1">Sexo:</label>
+									<div class="col-xs-12 col-sm-6">
+										<label class="col-sm-6 control-label no-padding-right">Sexo:</label>
 
-											<div class="col-sm-9">
-												<select class="col-xs-10 col-sm-5" id="form-field-select-1" name="selsexo">
-													<option value=""></option>
-													<option value="hm">Hombre</option>
-													<option value="mj">Mujer</option>
-												</select>
-											</div>
+										<div class="col-sm-5">
+											<label>
+												<input name="selsexo" type="radio" class="ace" value="1"
+												<?php if (isset($_POST['selsexo']) && $_POST['selsexo'] == 1): ?>checked='checked'<?php endif; ?>/>
+												<span class="lbl">Hombre</span>
+											</label>
 										</div>
+
+										<div class="col-sm-5">
+											<label>
+												<input name="selsexo" type="radio" class="ace" value="0"
+												<?php if (isset($_POST['selsexo']) && $_POST['selsexo'] == 0): ?>checked='checked'<?php endif; ?>/>
+												<span class="lbl">Mujer</span>
+											</label>
+										</div>
+									</div>
 									<br />
+									<br>
+									<br>
+									<br>
 										<div class="form-group">
 											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Teléfono: </label>
 
 											<div class="col-sm-9">
-												<input type="number" min="1"  maxlength="8" id="form-field-1" placeholder="57575757" class="col-xs-10 col-sm-5" name="txttelefono"/>
+												<input type="number" min="1"  maxlength="8" id="form-field-1" placeholder="57575757" class="col-xs-10 col-sm-5" name="txttelefono" required/>
 											</div>
 										</div>
 									<br />
@@ -1080,7 +1047,7 @@
 											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Dirección: </label>
 
 											<div class="col-sm-9">
-												<input type="text"  id="form-field-1" placeholder="Bo. La Fuente" class="col-xs-10 col-sm-5" name="txtdireccion"/>
+												<input type="text"  id="form-field-1" placeholder="Bo. La Fuente" class="col-xs-10 col-sm-5" name="txtdireccion" required/>
 											</div>
 										</div>
 									<br />
@@ -1088,12 +1055,12 @@
 											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Correo: </label>
 
 											<div class="col-sm-9">
-												<input type="email" id="form-field-1" placeholder="juanga@yopmail.com" class="col-xs-10 col-sm-5" name="txttelefono"/>
+												<input type="email" id="form-field-1" placeholder="juanga@yopmail.com" class="col-xs-10 col-sm-5" name="txtcorreo" />
 											</div>
 										</div>
 										<div >
 											<div class="col-sm-9">
-												<button class="btn btn-info" type="button">
+												<button class="btn btn-info" type="submit">
 													<i class="ace-icon fa fa-check bigger-110"></i>
 													Registrar
 												</button>

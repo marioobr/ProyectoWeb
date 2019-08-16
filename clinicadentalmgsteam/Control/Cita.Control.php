@@ -3,8 +3,8 @@
     include_once("../Entidades/Cita.php");
     include_once("../Modelo/Cita.modelo.php");
 
-    $cit = new Cita();
-    $citModelo = new CitaM;
+    $pac = new Cita();
+    $citModelo = new CitaModelo();
 
 
     if ($_POST) 
@@ -17,46 +17,36 @@
                 try
                 {
 
-                    $pac->__SET('Cedula', $_POST['txtcedula']);
-                    $pac->__SET('NoExpediente', $_POST['txtexpediente']);
-                    $pac->__SET('Nombres', $_POST['txtnombres']);
-                    $pac->__SET('Apellidos', $_POST['txtapellidos']);
-                    $pac->__SET('Edad', $_POST['txtedad']);
-                    $pac->__SET('Sexo', $_POST['selsexo']);
-                    $pac->__SET('Telefono', $_POST['txttelefono']);
-                    $pac->__SET('Direccion', $_POST['txtdireccion']);
-                    $pac->__SET('Correo', $_POST['txtcorreo']);
+                    $pac->__SET('Fecha', $_POST['txtFecha']);
+                    $pac->__SET('HoraInicio', $_POST['txtTime']);
+                    $pac->__SET('Doctor_idDoctor', $_POST['txtDoctor']);
+                    $pac->__SET('Paciente_idPaciente', $_POST['txtPaciente']);
             
-                    $pacModelo->Registrar($pac);
+                    $citModelo->Registrar($pac);
                     //var_dump($emp);
-                    header("Location: /clinicadentalmgsteam/tblPacientes.php?msjNewEmp=1");
+                    header("Location: /clinicadentalmgsteam/tblCitas.php?msjNewCita=1");
                     
                 }
                 catch(Exception $e) {
-                    header("Location: /clinicadentalmgsteam/tblPacientes.php?msjNewEmp=2");
+                    header("Location: /clinicadentalmgsteam/tblCita.php?msjNewCita=2");
                     die($e->getMessage());
                 }
                 break;
             
             case '2':
                 try {
-                    $pac->__SET('idPaciente', $_POST['txtid']);
-                    $pac->__SET('cedula', $_POST['txtcedula']);
-                    $pac->__SET('noExpediente', $_POST['txtexpediente']);
-                    $pac->__SET('nombres', $_POST['txtnombres']);
-                    $pac->__SET('apellidos', $_POST['txtapellidos']);
-                    $pac->__SET('edad', $_POST['txtedad']);
-                    $pac->__SET('sexo', $_POST['selsexo']);
-                    $pac->__SET('telefono', $_POST['txttelefono']);
-                    $pac->__SET('direccion', $_POST['txtdireccion']);
-                    $pac->__SET('correo', $_POST['txtcorreo']);
+
+                    $pac->__SET('Fecha', $_POST['txtFecha']);
+                    $pac->__SET('HoraInicio', $_POST['txtTime']);
+                    $pac->__SET('Doctor_idDoctor', $_POST['txtDoctor']);
+                    $pac->__SET('Paciente_idPaciente', $_POST['txtPaciente']);
             
-                    $pacModelo->actualizarEmp($pac);
+                    $citModelo->actualizarCita($pac);
                     //var_dump($emp);
-                    header("Location: /clinicadentalmgsteam/tblPacientes.php?msjEditEmp=1");
+                    header("Location: /clinicadentalmgsteam/tblCitas.php?msjEditCita=1");
 
                 } catch (Exception $e) {
-                    header("Location:/clinicadentalmgsteam/tblPacientes.php?msjEditEmp=2");
+                    header("Location:/clinicadentalmgsteam/tblCitas.php?msjEditCita=2");
                     die($e->getMessage());
                 }
                 

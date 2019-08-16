@@ -79,14 +79,11 @@ Class PacienteModelo extends Conexion{
 		{
 			$this->myCon = parent::conectar();
 			$sql = "UPDATE paciente SET 
-						Cedula = ?, 
+						Cedula = ?,
+						NoExpediente = ?, 
 						Nombres = ?,
 						Apellidos = ?, 
-						Edad = ?,
-						Sexo = ?, 
 						Telefono = ?,
-						Direccion = ?, 
-						Correo = ?,
 						Estado = 2 
 				    WHERE idPaciente = ?";
 
@@ -97,11 +94,7 @@ Class PacienteModelo extends Conexion{
 					$data->__GET('NoExpediente'), 
 					$data->__GET('Nombres'), 
 					$data->__GET('Apellidos'),
-					$data->__GET('Edad'),
-					$data->__GET('Sexo'),
 					$data->__GET('Telefono'), 
-					$data->__GET('Direccion'), 
-					$data->__GET('Correo'),
 					$data->__GET('idPaciente')
 					)
 				);
@@ -124,7 +117,7 @@ Class PacienteModelo extends Conexion{
 			
 			$r = $stm->fetch(PDO::FETCH_OBJ);
 
-			$pac = new Paciente();;
+			$pac = new Paciente();
 
 			$pac->__SET('idPaciente', $r->idPaciente);		
 			$pac->__SET('Cedula', $r->Cedula);		

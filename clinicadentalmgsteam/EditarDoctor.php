@@ -5,6 +5,9 @@ include 'Modelo/Doctor.modelo.php';
 
 $modeloDoc = new DocModelo();
 
+$DocEdit;
+$varIdDoc = $_GET['idDoc'];
+$DocEdit = $modeloDoc->obtenerDoc($varIdDoc);
 ?>
 
 <!DOCTYPE html>
@@ -519,27 +522,9 @@ $modeloDoc = new DocModelo();
 							</li>
 
 							<li class="hover">
-								<a href="elements.html">
+								<a href="tblPacientes.php">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Ver Pacientes
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="hover">
-								<a href="buttons.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Actualizar Paciente
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="hover">
-								<a href="content-slider.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Eliminar Paciente
+									Administrar Pacientes
 								</a>
 
 								<b class="arrow"></b>
@@ -648,27 +633,9 @@ $modeloDoc = new DocModelo();
 							</li>
 
 							<li class="hover">
-								<a href="tables.html">
+								<a href="tblDoctores.php">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Ver Doctores
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="hover">
-								<a href="jqgrid.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Actualizar Doctor
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="hover">
-								<a href="jqgrid.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Eliminar Doctor
+									Administrar Doctores
 								</a>
 
 								<b class="arrow"></b>
@@ -706,27 +673,9 @@ $modeloDoc = new DocModelo();
 							</li>
 
 							<li class="hover">
-								<a href="form-wizard.html">
+								<a href="tblCitas.php">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Ver citas
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="hover">
-								<a href="wysiwyg.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Actualizar cita
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="hover">
-								<a href="dropzone.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Eliminar cita
+									Administrar Citas
 								</a>
 
 								<b class="arrow"></b>
@@ -990,7 +939,7 @@ $modeloDoc = new DocModelo();
 
 						<div class="page-header">
 							<h1>
-								Registrar Doctor
+								Editar Doctor
 								<small>
 									<i class="ace-icon fa fa-angle-double-right"></i>
 									
@@ -1031,12 +980,13 @@ $modeloDoc = new DocModelo();
 								<div class="center">
 									<br>
 									<form class="form-horizontal" role="form" name="AgrDoctor" method="POST" action="Control/Doctor.control.php">
-									<input name="txtaccion" type="hidden" value="1">
+									<input name="txtaccion" id="txtaccion" type="hidden" value="2">
+									<input name="txtIdDoc" id="txtIdDoc" type="hidden" value="">
 										<div class="form-group">
 											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Cédula: </label>
 
 											<div class="col-sm-9">
-												<input type="text" maxlength="16" id="form-field-1" placeholder="001-300220-0024Q" class="col-xs-10 col-sm-5" name="txtcedula"/>
+												<input type="text" maxlength="16" id="txtCedula" placeholder="001-300220-0024Q" class="col-xs-10 col-sm-5" name="txtcedula"/>
 											</div>
 										</div>
 									<br />
@@ -1044,7 +994,7 @@ $modeloDoc = new DocModelo();
 											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Cod.MINSA: </label>
 
 											<div class="col-sm-9">
-												<input type="number" min="1" maxlength="5" id="form-field-1" placeholder="12345" class="col-xs-10 col-sm-5" name="txtminsa"/>
+												<input type="number" min="1" maxlength="5" id="txtMINSA" placeholder="12345" class="col-xs-10 col-sm-5" name="txtminsa"/>
 											</div>
 										</div>
 									<br />
@@ -1052,7 +1002,7 @@ $modeloDoc = new DocModelo();
 											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Nombres: </label>
 
 											<div class="col-sm-9">
-												<input type="text"  id="form-field-1" placeholder="Marco Antonio" class="col-xs-10 col-sm-5" name="txtnombres"/>
+												<input type="text"  id="txtNombres" placeholder="Marco Antonio" class="col-xs-10 col-sm-5" name="txtnombres"/>
 											</div>
 										</div>
 									<br />
@@ -1060,7 +1010,7 @@ $modeloDoc = new DocModelo();
 											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Apellidos: </label>
 
 											<div class="col-sm-9">
-												<input type="text"  id="form-field-1" placeholder="Solis Barrios" class="col-xs-10 col-sm-5" name="txtapellidos"/>
+												<input type="text"  id="txtApellidos" placeholder="Solis Barrios" class="col-xs-10 col-sm-5" name="txtapellidos"/>
 											</div>
 										</div>
 									<br />
@@ -1068,29 +1018,10 @@ $modeloDoc = new DocModelo();
 											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Teléfono: </label>
 
 											<div class="col-sm-9">
-												<input type="number" min="1"  maxlength="8" id="form-field-1" placeholder="57575757" class="col-xs-10 col-sm-5" name="txttelefono"/>
+												<input type="number" min="1"  maxlength="8" id="txtTelefono" placeholder="57575757" class="col-xs-10 col-sm-5" name="txttelefono"/>
 											</div>
 										</div>
 									<br>
-									<div class="col-xs-12 col-sm-6">
-										<label class="col-sm-6 control-label no-padding-right">Sexo:</label>
-
-										<div class="col-sm-5">
-											<label>
-												<input name="selsexo" type="radio" class="ace" value="1"
-												<?php if (isset($_POST['selsexo']) && $_POST['selsexo'] == 1): ?>checked='checked'<?php endif; ?>/>
-												<span class="lbl">Hombre</span>
-											</label>
-										</div>
-
-										<div class="col-sm-5">
-											<label>
-												<input name="selsexo" type="radio" class="ace" value="0"
-												<?php if (isset($_POST['selsexo']) && $_POST['selsexo'] == 0): ?>checked='checked'<?php endif; ?>/>
-												<span class="lbl">Mujer</span>
-											</label>
-										</div>
-									</div>
 									<br>
 									<br>
 									<br>
@@ -1170,6 +1101,24 @@ $modeloDoc = new DocModelo();
 		<script src="assets/js/ace.min.js"></script>
 
 		<!-- inline scripts related to this page -->
+		<script> // Esto es lo otro que cambiar 
+    $(document).ready(function()
+    {
+
+      $("#txtIdDoc").val("<?php echo $varIdDoc ?>");
+      $("#txtCedula").val("<?php echo $DocEdit->__GET('Cedula') ?>");
+      $("#txtMINSA").val("<?php echo $DocEdit->__GET('CodMINSA') ?>"); //En esta parte le debes de poner primero el ID del textbox, luego la variable declarada arriba y por ultimo lo que debee obtener de la base de datos
+      $("#txtNombres").val("<?php echo $DocEdit->__GET('Nombres') ?>");
+      $("#txtApellidos").val("<?php echo $DocEdit->__GET('Apellidos') ?>");
+      $("#txtTelefono").val("<?php echo $DocEdit->__GET('Telefono') ?>");
+
+
+      
+    });
+	
+    //Esto de se encarga de que en el formulario se llenen los campos con lo que tiene la base de datos
+    </script>
+
 		<script type="text/javascript">
 			jQuery(function($) {
 			 var $sidebar = $('.sidebar').eq(0);

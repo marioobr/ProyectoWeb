@@ -3,12 +3,30 @@ include 'Entidades/Doctor.php';
 include 'Modelo/Doctor.modelo.php';
 include 'Control/Doctor.control.php';
 
-$modeloDoc = new DocModelo();
+$modeloCita = new DocModelo();
 
 //variable de control
-$varMsjNewDoc = $_Get['msjNewDoc'];
+if(!empty($_Get['msjNewDoc'])){
+	$varMsjNewCita = $_Get['msjNewDoc'];
+}
+else{
+	$varMsjNewCita = 0;
+}
 //variable de control
-$varMsjEditDoc = $_Get['msjEditDoc'];
+if(!empty($_Get['msjEditDoc'])){
+	$varMsjNewCita = $_Get['msjNewDoc'];
+}
+else{
+	$varMsjEdiCita = 0;
+}
+if(!empty($_Get['eliminado'])){
+	$varDeLPac = $_GET['eliminado'];
+}
+else
+{
+	$varMsjEdiCita = 0;
+
+}
 ?>
 
 <!DOCTYPE html>
@@ -418,16 +436,7 @@ $varMsjEditDoc = $_Get['msjEditDoc'];
 				</div><!-- /.sidebar-shortcuts-->
 
 				<ul class="nav nav-list">
-					<!-- <li class="hover">
-						<a href="index.html">
-							<i class="menu-icon fa fa-tachometer"></i>
-							<span class="menu-text"> Dashboard </span>
-						</a>
-
-						<b class="arrow"></b>
-					</li> -->
-
-					<li class="hover">
+				<li class="hover">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fas fa-user"></i>
 							<span class="menu-text">
@@ -517,27 +526,9 @@ $varMsjEditDoc = $_Get['msjEditDoc'];
 							</li>
 
 							<li class="hover">
-								<a href="elements.html">
+								<a href="tblPacientes.php">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Ver Pacientes
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="hover">
-								<a href="buttons.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Actualizar Paciente
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="hover">
-								<a href="content-slider.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Eliminar Paciente
+									Administrar Pacientes
 								</a>
 
 								<b class="arrow"></b>
@@ -625,7 +616,7 @@ $varMsjEditDoc = $_Get['msjEditDoc'];
 						</ul>
 					</li>
 
-					<li class="active open hover">
+					<li class="active hover">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fas fa-user-md"></i>
 							<span class="menu-text"> Doctores </span>
@@ -646,27 +637,9 @@ $varMsjEditDoc = $_Get['msjEditDoc'];
 							</li>
 
 							<li class="hover">
-								<a href="tables.html">
+								<a href="tblDoctores.php">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Ver Doctores
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="hover">
-								<a href="jqgrid.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Actualizar Doctor
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="hover">
-								<a href="jqgrid.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Eliminar Doctor
+									Administrar Doctores
 								</a>
 
 								<b class="arrow"></b>
@@ -704,27 +677,9 @@ $varMsjEditDoc = $_Get['msjEditDoc'];
 							</li>
 
 							<li class="hover">
-								<a href="form-wizard.html">
+								<a href="tblCitas.php">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Ver citas
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="hover">
-								<a href="wysiwyg.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Actualizar cita
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="hover">
-								<a href="dropzone.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Eliminar cita
+									Administrar Citas
 								</a>
 
 								<b class="arrow"></b>
@@ -988,10 +943,10 @@ $varMsjEditDoc = $_Get['msjEditDoc'];
 
 						<div class="page-header">
 							<h1>
-								Top Menu Style
+								Administrar Doctores
 								<small>
 									<i class="ace-icon fa fa-angle-double-right"></i>
-									top menu &amp; navigation
+									
 								</small>
 							</h1>
 						</div><!-- /.page-header -->
@@ -1029,15 +984,16 @@ $varMsjEditDoc = $_Get['msjEditDoc'];
 								<div class="center">
 									<br />
 									<br />
+									<br />
 									<div class="row">
 									<div class="col-xs-12">
-										<h3 class="header smaller lighter blue">jQuery dataTables</h3>
+										<h3 class="header smaller lighter blue">Doctores</h3>
 
 										<div class="clearfix">
 											<div class="pull-right tableTools-container"></div>
 										</div>
 										<div class="table-header">
-											Results for "Latest Registered Domains"
+											Resultado 
 										</div>
 
 										<!-- div.table-responsive -->
@@ -1053,43 +1009,32 @@ $varMsjEditDoc = $_Get['msjEditDoc'];
 																<span class="lbl"></span>
 															</label>
 														</th> -->
-														<th>Id</th>
-														<th>Cédula</th>
-														<th>Cod.MINSA</th>
-														<th class="hidden-480">Nombres</th>
-
-														<th>
-															<i class="hidden-480"></i>
-															Telefono
-														</th>
-														<th class="hidden-480">Sexo</th>
-
+														<th>ID</th>
+														<th>Cod. Minsa</th>
+														<th>Cedula</th>
+														<th>Nombre</th>
+														<th>Sexo</th>
+														<th class="hidden-480">Teléfono</th>
 														<th></th>
 													</tr>
 												</thead>
 
 												<tbody>
-													<?php foreach($modeloDoc->listarDoc() as $r): ?>
+													<?php foreach($modeloCita->listarDoc() as $r): ?>
 															<tr>
 																<td><?php echo $r->__GET('idDoctor'); ?></td>
-																<td><?php echo $r->__GET('Cedula');?></td>
 																<td><?php echo $r->__GET('CodMINSA');?></td>
-																<td><?php echo $r->__GET('Nombres')," ",$r->__GET('Apellidos') ; ?></td>
-																<td><?php echo $r->__GET('Telefono'); ?></td>
+																<td><?php echo $r->__GET('Cedula');?></td>
+																<td><?php echo $r->__GET('Nombres'); ?></td>
 																<td><?php echo $r->__GET('Sexo'); ?></td>
+																<td><?php echo $r->__GET('Telefono'); ?></td>
 																<td>
 																	<div class="hidden-sm hidden-xs action-buttons">
 																		<a class="blue" href="#">
 																			<i class="ace-icon fa fa-search-plus bigger-130"></i>
 																		</a>
 
-																		<a class="green" href="#">
-																			<i class="fas fa-edit bigger-130"></i>
-																		</a>
-
-																		<a class="red" href="#">
-																			<i class="fas fa-trash bigger-130"></i>
-																		</a>
+																		<a class="green" href="EditarDoctor.php?idDoc=<?php echo $r->__GET('idDoctor'); ?>"><i class="fas fa-edit bigger-130" title="Modificar"></i></a> &nbsp;&nbsp; <a class="red" href="Control/Doctor.control.php?idDoc=<?php echo $r->__GET('idDoctor'); ?>"><i class="fas fa-trash bigger-130" title="Eliminar"></i> </a>
 																	</div>
 																</td>
 															</tr>
@@ -1099,8 +1044,6 @@ $varMsjEditDoc = $_Get['msjEditDoc'];
 										</div>
 									</div>
 								</div>
-									<br />
-									<br />
 								</div>
 
 								<!-- PAGE CONTENT ENDS -->
@@ -1157,6 +1100,70 @@ $varMsjEditDoc = $_Get['msjEditDoc'];
 		<script src="assets/js/bootstrap.min.js"></script>
 
 		<!-- page specific plugin scripts -->
+
+		<!-- ace scripts -->
+		<script src="assets/js/ace-elements.min.js"></script>
+		<script src="assets/js/ace.min.js"></script>
+
+		<!-- inline scripts related to this page -->
+		<script type="text/javascript">
+			jQuery(function($) {
+			 var $sidebar = $('.sidebar').eq(0);
+			 if( !$sidebar.hasClass('h-sidebar') ) return;
+			
+			 $(document).on('settings.ace.top_menu' , function(ev, event_name, fixed) {
+				if( event_name !== 'sidebar_fixed' ) return;
+			
+				var sidebar = $sidebar.get(0);
+				var $window = $(window);
+			
+				//return if sidebar is not fixed or in mobile view mode
+				var sidebar_vars = $sidebar.ace_sidebar('vars');
+				if( !fixed || ( sidebar_vars['mobile_view'] || sidebar_vars['collapsible'] ) ) {
+					$sidebar.removeClass('lower-highlight');
+					//restore original, default marginTop
+					sidebar.style.marginTop = '';
+			
+					$window.off('scroll.ace.top_menu')
+					return;
+				}
+			
+			
+				 var done = false;
+				 $window.on('scroll.ace.top_menu', function(e) {
+			
+					var scroll = $window.scrollTop();
+					scroll = parseInt(scroll / 4);//move the menu up 1px for every 4px of document scrolling
+					if (scroll > 17) scroll = 17;
+			
+			
+					if (scroll > 16) {			
+						if(!done) {
+							$sidebar.addClass('lower-highlight');
+							done = true;
+						}
+					}
+					else {
+						if(done) {
+							$sidebar.removeClass('lower-highlight');
+							done = false;
+						}
+					}
+			
+					sidebar.style['marginTop'] = (17-scroll)+'px';
+				 }).triggerHandler('scroll.ace.top_menu');
+			
+			 }).triggerHandler('settings.ace.top_menu', ['sidebar_fixed' , $sidebar.hasClass('sidebar-fixed')]);
+			
+			 $(window).on('resize.ace.top_menu', function() {
+				$(document).triggerHandler('settings.ace.top_menu', ['sidebar_fixed' , $sidebar.hasClass('sidebar-fixed')]);
+			 });
+			
+			
+			});
+		</script>
+
+		<!-- more -->
 
 		<!-- ace scripts -->
 		<script src="assets/js/ace-elements.min.js"></script>

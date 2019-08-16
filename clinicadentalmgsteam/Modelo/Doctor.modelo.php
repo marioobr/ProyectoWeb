@@ -79,7 +79,6 @@ Class DocModelo extends Conexion{
 						Nombres = ?,
 						Apellidos = ?,
 						Telefono = ?,
-						Sexo = ?,
 						Estado = 2 
 				    WHERE idDoctor = ?";
 
@@ -91,7 +90,6 @@ Class DocModelo extends Conexion{
 					$data->__GET('Nombres'), 
 					$data->__GET('Apellidos'),
 					$data->__GET('Telefono'),
-					$data->__GET('Sexo'),
 					$data->__GET('idDoctor')
 					)
 				);

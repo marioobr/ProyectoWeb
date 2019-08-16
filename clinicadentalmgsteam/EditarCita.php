@@ -1,3 +1,15 @@
+<?php
+include 'Entidades/Doctor.php';
+
+include 'Modelo/Doctor.modelo.php';
+
+$modeloDoc = new DocModelo();
+
+$DocEdit;
+$varIdDoc = $_GET['idCita'];
+$DocEdit = $modeloDoc->obtenerDoc($varIdDoc);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -15,7 +27,13 @@
 		<link rel="stylesheet" href="assets/font-awesome/5.10.1/css/solid.min.css" />
 
 		<!-- page specific plugin styles -->
-
+		<link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
+		<link rel="stylesheet" href="assets/css/chosen.min.css" />
+		<link rel="stylesheet" href="assets/css/bootstrap-datepicker3.min.css" />
+		<link rel="stylesheet" href="assets/css/bootstrap-timepicker.min.css" />
+		<link rel="stylesheet" href="assets/css/daterangepicker.min.css" />
+		<link rel="stylesheet" href="assets/css/bootstrap-datetimepicker.min.css" />
+		<link rel="stylesheet" href="assets/css/bootstrap-colorpicker.min.css" />
 		<!-- text fonts -->
 		<link rel="stylesheet" href="assets/css/fonts.googleapis.com.css" />
 
@@ -414,7 +432,7 @@
 						<b class="arrow"></b>
 					</li> -->
 
-					<li class="active open hover">
+					<li class="open hover">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fas fa-user"></i>
 							<span class="menu-text">
@@ -594,7 +612,7 @@
 						</ul>
 					</li>
 
-					<li class="hover">
+					<li class=" hover">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fas fa-user-md"></i>
 							<span class="menu-text"> Doctores </span>
@@ -625,8 +643,8 @@
 						</ul>
 					</li>
 
-					<li class="hover">
-						<a href="AgrCita.php" class="dropdown-toggle">
+					<li class="active open hover">
+						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-pencil-square-o"></i>
 							<span class="menu-text"> Citas </span>
 
@@ -921,7 +939,7 @@
 
 						<div class="page-header">
 							<h1>
-								Bienvenido
+								Editar Cita
 								<small>
 									<i class="ace-icon fa fa-angle-double-right"></i>
 									
@@ -960,46 +978,63 @@
 								</div>
 
 								<div class="center">
+									<br>
+									<form class="form-horizontal" role="form" name="AgrDoctor" method="POST" action="Control/Doctor.control.php">
+									<input name="txtaccion" type="hidden" value="2">
+									<input name="txtIdCita" id="txtIdCita" type="hidden" value="">
+									<form class="form-horizontal" role="form" name="AgrCita" method="POST" action="Control/Cita.Control.php">
+									<input name="txtaccion" type="hidden" value="1">
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Fecha: </label>
+
+										<div class="col-sm-9">
+											<input type="date" id="form-field-1" placeholder="mm-dd-yyyy" class="col-xs-10 col-sm-3" name="txtDate" title="Fecha"/>
+										</div>
+									</div>
+									<br />
+									<br>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Hora: </label>
+
+										<div class="col-sm-9">
+											<input type="time"id="form-field-1"  class="col-xs-10 col-sm-3" name="txtTime"/>
+										</div>
+									</div>
+									<br /><br>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1">Doctor:</label>
+										<div class="col-sm-3">
+											<select name="txtDoctor" class="form-control" id="form-field-select-1">
+												<option value=""></option>
+											</select>
+										</div>
+									</div>
 									<br />
 									<br />
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1">Paciente:</label>
+										<div class="col-sm-3">
+											<select name="txtPaciente" class="form-control" id="form-field-select-1">
+												<option value=""></option>
+											</select>
+										</div>
+									</div>
+
 									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
+									<br>
+											<div class="col-sm-9">
+												<button class="btn btn-info" type="submit">
+													<i class="ace-icon fa fa-check bigger-110"></i>
+													Registrar
+												</button>
+
+												&nbsp; &nbsp; &nbsp;
+												<button class="btn" type="reset">
+													<i class="ace-icon fa fa-undo bigger-110"></i>
+													Cancelar
+												</button>
+											</div>
+									</form>
 								</div>
 
 								<!-- PAGE CONTENT ENDS -->
@@ -1062,6 +1097,23 @@
 		<script src="assets/js/ace.min.js"></script>
 
 		<!-- inline scripts related to this page -->
+		<script> // Esto es lo otro que cambiar 
+    $(document).ready(function()
+    {
+
+      $("#txtidCita").val("<?php echo $varIdDoc ?>");
+      $("#txtDate").val("<?php echo $DocEdit->__GET('Fecha') ?>");
+      $("#txtTime").val("<?php echo $DocEdit->__GET('HoraInicio') ?>");
+      $("#txtDoctor").val("<?php echo $DocEdit->__GET('Doctor_idDoctor') ?>"); //En esta parte le debes de poner primero el ID del textbox, luego la variable declarada arriba y por ultimo lo que debee obtener de la base de datos
+      $("#txtPaciente").val("<?php echo $DocEdit->__GET('Paciente_idPaciente') ?>");
+
+
+      
+    });
+	
+    //Esto de se encarga de que en el formulario se llenen los campos con lo que tiene la base de datos
+    </script>
+
 		<script type="text/javascript">
 			jQuery(function($) {
 			 var $sidebar = $('.sidebar').eq(0);

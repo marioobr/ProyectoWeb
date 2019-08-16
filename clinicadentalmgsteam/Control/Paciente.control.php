@@ -29,34 +29,31 @@
             
                     $pacModelo->Registrar($pac);
                     //var_dump($emp);
-                    header("Location: /clinicadentalmgsteam/tblPacientes.php?msjNewEmp=1");
+                    header("Location: clinicadentalmgsteam/tblPacientes.php?msjNewPac=1");
                     
                 }
                 catch(Exception $e) {
-                    header("Location: /clinicadentalmgsteam/tblPacientes.php?msjNewEmp=2");
+                    header("Location: clinicadentalmgsteam/tblPacientes.php?msjNewPac=2");
                     die($e->getMessage());
                 }
                 break;
             
             case '2':
                 try {
-                    $pac->__SET('idPaciente', $_POST['txtid']);
-                    $pac->__SET('cedula', $_POST['txtcedula']);
-                    $pac->__SET('noExpediente', $_POST['txtexpediente']);
-                    $pac->__SET('nombres', $_POST['txtnombres']);
-                    $pac->__SET('apellidos', $_POST['txtapellidos']);
-                    $pac->__SET('edad', $_POST['txtedad']);
-                    $pac->__SET('sexo', $_POST['selsexo']);
-                    $pac->__SET('telefono', $_POST['txttelefono']);
-                    $pac->__SET('direccion', $_POST['txtdireccion']);
-                    $pac->__SET('correo', $_POST['txtcorreo']);
+                    $pac->__SET('idPaciente', $_POST['txtIdPac']);
+                    $pac->__SET('Cedula', $_POST['txtcedula']);
+                    $pac->__SET('NoExpediente', $_POST['txtminsa']);
+                    $pac->__SET('Nombres', $_POST['txtnombres']);
+                    $pac->__SET('Apellidos', $_POST['txtapellidos']);
+                    $pac->__SET('Telefono', $_POST['txttelefono']);
+                    $pac->__SET('Estado', $_POST['txttelefono']);
             
-                    $pacModelo->actualizarEmp($pac);
+                    $pacModelo->actualizarPac($pac);
                     //var_dump($emp);
-                    header("Location: /clinicadentalmgsteam/tblPacientes.php?msjEditEmp=1");
+                    header("Location: clinicadentalmgsteam/tblPacientes.php?msjEditPac=1");
 
                 } catch (Exception $e) {
-                    header("Location:/clinicadentalmgsteam/tblPacientes.php?msjEditEmp=2");
+                    header("Location: clinicadentalmgsteam/tblPacientes.php?msjEditPac=2");
                     die($e->getMessage());
                 }
                 
@@ -73,8 +70,16 @@
     
     if ($_GET) 
     {
-        $emp->__SET('idPaciente', $_GET['idPac']);
-        $empModelo->eliminarEmp($emp->__GET('idPaciente'));
-        header("Location: /clinicadentalmgsteam/tblPacientes.php");
+        try 
+        {
+            $pac->__SET('idPaciente', $_GET['idPac']);
+            $pacModelo->eliminarPac($pac->__GET('idPaciente'));
+            header("Location: Proyecto/clinicadentalmgsteam/tblPacientes.php?eliminado=1");
+        } 
+        catch(Exception $e)
+        {
+            header("Location: Proyecto/clinicadentalmgsteam/tblPacientes.php?eliminado=2");
+            die($e->getMessage());
+        }
     }
     

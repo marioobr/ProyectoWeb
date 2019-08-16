@@ -1,3 +1,15 @@
+<?php
+include 'Entidades/Paciente.php';
+
+include 'Modelo/Paciente.modelo.php';
+
+$modeloPac = new PacienteModelo();
+
+$DocEdit;
+$varIdDoc = $_GET['idPac'];
+$DocEdit = $modeloPac->obtenerPac($varIdDoc);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -15,7 +27,13 @@
 		<link rel="stylesheet" href="assets/font-awesome/5.10.1/css/solid.min.css" />
 
 		<!-- page specific plugin styles -->
-
+		<link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
+		<link rel="stylesheet" href="assets/css/chosen.min.css" />
+		<link rel="stylesheet" href="assets/css/bootstrap-datepicker3.min.css" />
+		<link rel="stylesheet" href="assets/css/bootstrap-timepicker.min.css" />
+		<link rel="stylesheet" href="assets/css/daterangepicker.min.css" />
+		<link rel="stylesheet" href="assets/css/bootstrap-datetimepicker.min.css" />
+		<link rel="stylesheet" href="assets/css/bootstrap-colorpicker.min.css" />
 		<!-- text fonts -->
 		<link rel="stylesheet" href="assets/css/fonts.googleapis.com.css" />
 
@@ -414,7 +432,7 @@
 						<b class="arrow"></b>
 					</li> -->
 
-					<li class="active open hover">
+					<li class=" active open hover">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fas fa-user"></i>
 							<span class="menu-text">
@@ -594,7 +612,7 @@
 						</ul>
 					</li>
 
-					<li class="hover">
+					<li class=" hover">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fas fa-user-md"></i>
 							<span class="menu-text"> Doctores </span>
@@ -626,7 +644,7 @@
 					</li>
 
 					<li class="hover">
-						<a href="AgrCita.php" class="dropdown-toggle">
+						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-pencil-square-o"></i>
 							<span class="menu-text"> Citas </span>
 
@@ -921,7 +939,7 @@
 
 						<div class="page-header">
 							<h1>
-								Bienvenido
+								Editar Paciente
 								<small>
 									<i class="ace-icon fa fa-angle-double-right"></i>
 									
@@ -960,46 +978,67 @@
 								</div>
 
 								<div class="center">
+									<br>
+									<form class="form-horizontal" role="form" name="EditarPaciente" method="POST" action="Control/Paciente.control.php">
+									<input name="txtaccion" type="hidden" value="2">
+									<input name="txtIdPac" id="txtIdPac" type="hidden" value="">
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Cédula: </label>
+
+											<div class="col-sm-9">
+												<input type="text" maxlength="16" id="txtCedula" placeholder="001-300220-0024Q" class="col-xs-10 col-sm-5" name="txtcedula"/>
+											</div>
+										</div>
 									<br />
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> NoExpediente: </label>
+
+											<div class="col-sm-9">
+												<input type="number" min="1" maxlength="5" id="txtMINSA" placeholder="12345" class="col-xs-10 col-sm-5" name="txtminsa"/>
+											</div>
+										</div>
 									<br />
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Nombres: </label>
+
+											<div class="col-sm-9">
+												<input type="text"  id="txtNombres" placeholder="Marco Antonio" class="col-xs-10 col-sm-5" name="txtnombres"/>
+											</div>
+										</div>
 									<br />
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Apellidos: </label>
+
+											<div class="col-sm-9">
+												<input type="text"  id="txtApellidos" placeholder="Solis Barrios" class="col-xs-10 col-sm-5" name="txtapellidos"/>
+											</div>
+										</div>
 									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
-									<br />
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Teléfono: </label>
+
+											<div class="col-sm-9">
+												<input type="number" min="1"  maxlength="8" id="txtTelefono" placeholder="57575757" class="col-xs-10 col-sm-5" name="txttelefono"/>
+											</div>
+										</div>
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
+											<div class="col-sm-9">
+												<button class="btn btn-info" type="submit">
+													<i class="ace-icon fa fa-check bigger-110"></i>
+													Registrar
+												</button>
+
+												&nbsp; &nbsp; &nbsp;
+												<button class="btn" type="reset">
+													<i class="ace-icon fa fa-undo bigger-110"></i>
+													Cancelar
+												</button>
+											</div>
+									</form>
 								</div>
 
 								<!-- PAGE CONTENT ENDS -->
@@ -1062,6 +1101,24 @@
 		<script src="assets/js/ace.min.js"></script>
 
 		<!-- inline scripts related to this page -->
+		<script> // Esto es lo otro que cambiar 
+    $(document).ready(function()
+    {
+
+      $("#txtIdPac").val("<?php echo $varIdDoc ?>");
+      $("#txtCedula").val("<?php echo $DocEdit->__GET('Cedula') ?>");
+      $("#txtMINSA").val("<?php echo $DocEdit->__GET('NoExpediente') ?>"); //En esta parte le debes de poner primero el ID del textbox, luego la variable declarada arriba y por ultimo lo que debee obtener de la base de datos
+      $("#txtNombres").val("<?php echo $DocEdit->__GET('Nombres') ?>");
+      $("#txtApellidos").val("<?php echo $DocEdit->__GET('Apellidos') ?>");
+      $("#txtTelefono").val("<?php echo $DocEdit->__GET('Telefono') ?>");
+
+
+      
+    });
+	
+    //Esto de se encarga de que en el formulario se llenen los campos con lo que tiene la base de datos
+    </script>
+
 		<script type="text/javascript">
 			jQuery(function($) {
 			 var $sidebar = $('.sidebar').eq(0);
